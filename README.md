@@ -122,8 +122,8 @@
 应该显示这一类的结果：
 
 >     java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64
-	javapackages-tools-3.4.1-11.el7.noarch
-	java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64
+>     javapackages-tools-3.4.1-11.el7.noarch
+>     java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64
 
 使用下面的命令删除上面列出的内容：
 
