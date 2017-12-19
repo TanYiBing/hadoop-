@@ -252,7 +252,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     cp mapred-site.xml.template mapred-site.xml
 
 然后再配置mapred-site.xml:
->     <configuration>
+>  <configuration>
 		<property>
         	<name>mapreduce.framework.name</name>
         	<value>yarn</value>
