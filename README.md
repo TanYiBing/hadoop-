@@ -220,7 +220,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     	<property>
 >     		<name>dfs.name.dir</name>
 >     		<value>/opt/hadoop/hdfs/name</value>
-	>     		<description>namenode上存储hdfs名字空间元数据 </descriptio>     	 
+>     		<description>namenode上存储hdfs名字空间元数据 </descriptio>     	 
 >     	</property>
 >     	<property>
 >     		<name>dfs.data.dir</name>
@@ -230,7 +230,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     	<property>
 >     		<name>dfs.replication</name>
 >     		<value>1</value>
->     	<description>副本个数，配置默认是3,应小于datanode机器数量</description>
+>     		<description>副本个数，配置默认是3,应小于datanode机器数量</description>
 >     	</property>
 >     </configuration>
 
@@ -243,7 +243,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     	<property>
 >     		<name>yarn.resourcemanager.webapp.address</name>
 >     		<value>${yarn.resourcemanager.hostname}:8099</value>
-	>     	</propert>     
+>     	</propert>     
 >     </configuration>
 
 #####4)配置mapred-site.xml 
@@ -296,61 +296,61 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 **1.编写WordCount.java,包含Mapper类和Reducec类**
 >     import java.io.IOException;
-	import java.util.StringTokenizer;
-	import org.apache.hadoop.conf.Configuration;
-	import org.apache.hadoop.fs.Path;
-	import org.apache.hadoop.io.IntWritable;
-	import org.apache.hadoop.io.LongWritable;
-	import org.apache.hadoop.io.Text;
-	import org.apache.hadoop.mapreduce.Job;
-	import org.apache.hadoop.mapreduce.Mapper;
-	import org.apache.hadoop.mapreduce.Reducer;
-	import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-	import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-	import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-	import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-	public class WordCount {
-		public static class WordCountMap extends
-				Mapper<LongWritable, Text, Text, IntWritable> {
-			private final IntWritable one = new IntWritable(1);
-			private Text word = new Text();
-			public void map(LongWritable key, Text value, Context context)
-					throws IOException, InterruptedException {
-				String line = value.toString();
-				StringTokenizer token = new StringTokenizer(line);
-				while (token.hasMoreTokens()) {
-					word.set(token.nextToken());
-					context.write(word, one);
-				}
-			}
-		}
-		public static class WordCountReduce extends
-				Reducer<Text, IntWritable, Text, IntWritable> {
-			public void reduce(Text key, Iterable<IntWritable> values,
-					Context context) throws IOException, InterruptedException {
-				int sum = 0;
-				for (IntWritable val : values) {
-					sum += val.get();
-				}
-				context.write(key, new IntWritable(sum));
-			}
-		}
-		public static void main(String[] args) throws Exception {
-			Configuration conf = new Configuration();
-			Job job = new Job(conf);
-			job.setJarByClass(WordCount.class);
-			job.setJobName("wordcount");
-			job.setOutputKeyClass(Text.class);
-			job.setOutputValueClass(IntWritable.class);
-			job.setMapperClass(WordCountMap.class);
-			job.setReducerClass(WordCountReduce.class);
-			job.setInputFormatClass(TextInputFormat.class);
-			job.setOutputFormatClass(TextOutputFormat.class);
-			FileInputFormat.addInputPath(job, new Path(args[0]));
-			FileOutputFormat.setOutputPath(job, new Path(args[1]));
-			job.waitForCompletion(true);
-		}
-	}
+>     import java.util.StringTokenizer;
+>     import org.apache.hadoop.conf.Configuration;
+>     import org.apache.hadoop.fs.Path;
+>     import org.apache.hadoop.io.IntWritable;
+>     import org.apache.hadoop.io.LongWritable;
+>     import org.apache.hadoop.io.Text;
+>     import org.apache.hadoop.mapreduce.Job;
+>     import org.apache.hadoop.mapreduce.Mapper;
+>     import org.apache.hadoop.mapreduce.Reducer;
+>     import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+>     import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+>     import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+>     import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+>     public class WordCount {
+>		public static class WordCountMap extends
+>				Mapper<LongWritable, Text, Text, IntWritable> {
+>			private final IntWritable one = new IntWritable(1);
+>			private Text word = new Text();
+>			public void map(LongWritable key, Text value, Context context)
+>					throws IOException, InterruptedException {
+>				String line = value.toString();
+>				StringTokenizer token = new StringTokenizer(line);
+>				while (token.hasMoreTokens()) {
+>					word.set(token.nextToken());
+>					context.write(word, one);
+>				}
+>			}
+>		}
+>		public static class WordCountReduce extends
+>				Reducer<Text, IntWritable, Text, IntWritable> {
+>			public void reduce(Text key, Iterable<IntWritable> values,
+>					Context context) throws IOException, InterruptedException {
+>				int sum = 0;
+>				for (IntWritable val : values) {
+>					sum += val.get();
+>				}
+>				context.write(key, new IntWritable(sum));
+>			}
+>		}
+>		public static void main(String[] args) throws Exception {
+>			Configuration conf = new Configuration();
+>			Job job = new Job(conf);
+>			job.setJarByClass(WordCount.class);
+>			job.setJobName("wordcount");
+>			job.setOutputKeyClass(Text.class);
+>			job.setOutputValueClass(IntWritable.class);
+>			job.setMapperClass(WordCountMap.class);
+>			job.setReducerClass(WordCountReduce.class);
+>			job.setInputFormatClass(TextInputFormat.class);
+>			job.setOutputFormatClass(TextOutputFormat.class);
+>			FileInputFormat.addInputPath(job, new Path(args[0]));
+>			FileOutputFormat.setOutputPath(job, new Path(args[1]));
+>			job.waitForCompletion(true);
+>		}
+>	}
 
 
 **2.编译WordCount.java文件**
