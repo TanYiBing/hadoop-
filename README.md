@@ -138,9 +138,9 @@
 
 在/root /hadoop/目录下，建立tmp、hdfs/name、hdfs/data目录，执行如下命令：
 >     mkdir /root/hadoop/tmp 
-	mkdir /root/hadoop/hdfs 
-	mkdir /root/hadoop/hdfs/data 
-	mkdir /root/hadoop/hdfs/name 
+>     mkdir /root/hadoop/hdfs 
+>     mkdir /root/hadoop/hdfs/data 
+>     mkdir /root/hadoop/hdfs/name 
 
 ##ssh的安装、无密码配置
 
@@ -153,7 +153,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 成功显示出client、server版本的话则无需安装，若需要安装，则可以通过 yum 进行安装（安装过程中会让你输入 [y/N]，输入 y 即可）：
 
 >     sudo yum install openssh-clients
-	sudo yum install openssh-server
+>     sudo yum install openssh-server
 
 接着执行如下命令测试一下 SSH 是否可用：
 
@@ -216,35 +216,35 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 ##### 3)配置hdfs-site.xml 
 >     <configuration>
-		<!—hdfs-site.xml-->
-		<property>
-      		<name>dfs.name.dir</name>
-   			<value>/opt/hadoop/hdfs/name</value>
-    		<description>namenode上存储hdfs名字空间元数据 </description> 
-		</property>
-		<property>
-    		<name>dfs.data.dir</name>
-    		<value>/opt/hadoop/hdfs/data</value>
-    		<description>datanode上数据块的物理存储位置</description>
-		</property>
-		<property>
-    		<name>dfs.replication</name>
-   			<value>1</value>
-    		<description>副本个数，配置默认是3,应小于datanode机器数量</description>
-		</property>
-	</configuration>
+>     	<!—hdfs-site.xml-->
+>     	<property>
+>     		<name>dfs.name.dir</name>
+>     		<value>/opt/hadoop/hdfs/name</value>
+	>     		<description>namenode上存储hdfs名字空间元数据 </descriptio>     	 
+>     	</property>
+>     	<property>
+>     		<name>dfs.data.dir</name>
+>     		<value>/opt/hadoop/hdfs/data</value>
+>     		<description>datanode上数据块的物理存储位置</description>
+>     	</property>
+>     	<property>
+>     		<name>dfs.replication</name>
+>     		<value>1</value>
+>     	<description>副本个数，配置默认是3,应小于datanode机器数量</description>
+>     	</property>
+>     </configuration>
 
 ##### 4)配置yarn-site.xml 
 >     <configuration>
-		<property>
-        	<name>yarn.nodemanager.aux-services</name>
-        	<value>mapreduce_shuffle</value>
-		</property>
-		<property>
-        	<name>yarn.resourcemanager.webapp.address</name>
-        	<value>${yarn.resourcemanager.hostname}:8099</value>
-		</property>
-	</configuration>
+>     	<property>
+>     		<name>yarn.nodemanager.aux-services</name>
+>     		<value>mapreduce_shuffle</value>
+>     	</property>
+>     	<property>
+>     		<name>yarn.resourcemanager.webapp.address</name>
+>     		<value>${yarn.resourcemanager.hostname}:8099</value>
+	>     	</propert>     
+>     </configuration>
 
 #####4)配置mapred-site.xml 
 
@@ -252,24 +252,24 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     cp mapred-site.xml.template mapred-site.xml
 
 然后再配置mapred-site.xml:
->  <configuration>
-		<property>
-        	<name>mapreduce.framework.name</name>
-        	<value>yarn</value>
-		</property>
-	</configuration>
+>     <configuration>
+>     	<property>
+>     		<name>mapreduce.framework.name</name>
+>     		<value>yarn</value>
+>     	</property>
+>     </configuration>
 
 ##### 5)配置yarn-site.xml 
 >     <configuration>
-		<property>
-        	<name>yarn.nodemanager.aux-services</name>
-        	<value>mapreduce_shuffle</value>
-		</property>
-		<property>
-        	<name>yarn.resourcemanager.webapp.address</name>
-        	<value>${yarn.resourcemanager.hostname}:8099</value>
-		</property>
-	</configuration>
+>     	<property>
+>     		<name>yarn.nodemanager.aux-services</name>
+>     		<value>mapreduce_shuffle</value>
+>     	</property>
+>     	<property>
+>     		<name>yarn.resourcemanager.webapp.address</name>
+>     		<value>${yarn.resourcemanager.hostname}:8099</value>
+>     	</property>
+>     </configuration>
 
 ## 启动hadoop
 
