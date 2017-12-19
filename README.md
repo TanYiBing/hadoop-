@@ -1,28 +1,28 @@
-#云计算
+# 云计算
 ![hadoop](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513179599832&di=5338ae758687dfbf1514313e6c522592&imgtype=0&src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F793015%2F201611%2F793015-20161127231256315-1152955812.png)
 
-##配置步骤
+## 配置步骤
 
 **Tanyibing**，this is for *14级软件工程专业*，*My email <tanyibing1995@gmail.com> link* 
 
-###Hadoop环境准备工作
+### Hadoop环境准备工作
 * **VMware版本VMware-workstation-full-12.5.7-5813279(版本自己选择)Xshell5自己选择是否使用**
 * **CentOS版本CentOS-6.4-x86_64-bin-DVD1(本人的是64位，其他版本未测试)**
 * **Hadoop版本hadoop-2.6.0(安装完系统后直接命令行安装)**
 * **jdk版本jdk-8u45-linux-x64.tar**
 * **需要了解基本的linux和vim的使用**
 
-###资源位置
+### 资源位置
 **百度网盘:[https://pan.baidu.com/s/1i5s2eFF](https://pan.baidu.com/s/1i5s2eFF)**
 **密码:n3jq**
 
 **CentOS镜像下载地址[http://mirror.nsc.liu.se/centos-store/6.4/isos/x86_64/](http://mirror.nsc.liu.se/centos-store/6.4/isos/x86_64/)**
 
-##VMware安装以及CentOS安装
+## VMware安装以及CentOS安装
 
-###VMware安装步骤省略
+### VMware安装步骤省略
 
-###CentOS安装
+### CentOS安装
 1.点击新建虚拟机
 >![](http://b244.photo.store.qq.com/psb?/V12NgBng1izHUr/XUEkhtYNVb5.JI4Th9fgGzScHQZ.qptXboDgefhSNmY!/b/dPQAAAAAAAAA&bo=sALmAbAC5gEBACc!&rf=viewer_311)
 
@@ -109,7 +109,7 @@
 
 29.现在一个虚拟机就终于安装完成了
 
-##jdk、hadoop的解压
+## jdk、hadoop的解压
 
 **1.将jdk解压到 /opt 下**
 
@@ -175,7 +175,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 此时再用 ssh localhost 命令，无需输入密码就可以直接登陆了。
 
-##jdk、hadoop的配置
+## jdk、hadoop的配置
 
 **1.环境变量的配置**
 
@@ -197,10 +197,10 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 进入/opt/hadoop/hadoop-2.6.0/etc/hadoop目录
 
-#####1)在hadoop-env.sh和 yarn-env.sh的开头添加如下环境变量(一定要添加) 
+##### 1)在hadoop-env.sh和 yarn-env.sh的开头添加如下环境变量(一定要添加) 
 >     export JAVA_HOME=/opt/jdk1.8.0_45 
 
-#####2)配置core-site.xml  
+##### 2)配置core-site.xml  
 >     <configuration>
  			<property>
     			<name>fs.default.name</name>
@@ -214,7 +214,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 			</property>
 	</configuration>
 
-#####3)配置hdfs-site.xml 
+##### 3)配置hdfs-site.xml 
 >     <configuration>
 		<!—hdfs-site.xml-->
 		<property>
@@ -234,7 +234,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 		</property>
 	</configuration>
 
-#####4)配置yarn-site.xml 
+##### 4)配置yarn-site.xml 
 >     <configuration>
 		<property>
         	<name>yarn.nodemanager.aux-services</name>
@@ -259,7 +259,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 		</property>
 	</configuration>
 
-#####5)配置yarn-site.xml 
+##### 5)配置yarn-site.xml 
 >     <configuration>
 		<property>
         	<name>yarn.nodemanager.aux-services</name>
@@ -271,7 +271,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 		</property>
 	</configuration>
 
-##启动hadoop
+## 启动hadoop
 
 **1.格式化namenode**
 >     hadoop namenode -format
@@ -290,7 +290,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 ***至此，hadoop环境安装已经全部完成***
 
-##***hadoop下运行MapReduce代码***
+## ***hadoop下运行MapReduce代码***
 
 **在此，使用WordCount的旧版api版本演示**
 
@@ -380,7 +380,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >     hadoop fs cat output/part-r-00000 #查看提交的结果
 
 
-##附(xshell5、VMware tools使用安装)
+## 附(xshell5、VMware tools使用安装)
 
 
 ***VMware Tools可以让虚拟机和你的主机之间共享一个文件夹,具体操作不在此赘述，点击链接自行按教程安装[VMware Tools安装](https://jingyan.baidu.com/article/8ebacdf070c40c49f75cd558.html)***
