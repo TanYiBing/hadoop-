@@ -181,9 +181,9 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 >     vim /etc/profile加入如下配置：     
 >     export JAVA_HOME= /opt/jdk1.8.0_45
-	export HADOOP_HOME=/opt/hadoop/hadoop-2.6.0
-	exportCLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:
-	exportPATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:
+>	export HADOOP_HOME=/opt/hadoop/hadoop-2.6.0
+>	exportCLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:
+>	exportPATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:
 
 保存后，不要忘记执行如下命令使配置生效：
 >     source /etc/profile
@@ -202,7 +202,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 ##### 2)配置core-site.xml  
 >     <configuration>
- 			<property>
+>			<property>
     			<name>fs.default.name</name>
     			<value>hdfs://localhost:9000</value>
     			<description>HDFS的URI，文件系统://namenode标识:端口号</description>
