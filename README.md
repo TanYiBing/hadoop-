@@ -350,7 +350,7 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 >			FileOutputFormat.setOutputPath(job, new Path(args[1]));
 >			job.waitForCompletion(true);
 >		}
->	}
+>     }
 
 
 **2.编译WordCount.java文件**
