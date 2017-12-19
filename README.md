@@ -168,10 +168,10 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 首先输入 exit 退出刚才的 ssh，就回到了我们原先的终端窗口，然后利用 ssh-keygen 生成密钥，并将密钥加入到授权中：
 
 >     exit                           # 退出刚才的 ssh localhost
-	cd ~/.ssh/                     # 若没有该目录，请先执行一次ssh localhost
-	ssh-keygen -t rsa              # 会有提示，都按回车就可以
-	cat id_rsa.pub >> authorized_keys  # 加入授权
-	chmod 600 ./authorized_keys    # 修改文件权限
+>     cd ~/.ssh/                     # 若没有该目录，请先执行一次ssh localhost
+>     ssh-keygen -t rsa              # 会有提示，都按回车就可以
+>     cat id_rsa.pub >> authorized_keys  # 加入授权
+>     chmod 600 ./authorized_keys    # 修改文件权限
 
 此时再用 ssh localhost 命令，无需输入密码就可以直接登陆了。
 
@@ -181,9 +181,9 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 >     vim /etc/profile加入如下配置：     
 >     export JAVA_HOME= /opt/jdk1.8.0_45
->	export HADOOP_HOME=/opt/hadoop/hadoop-2.6.0
->	exportCLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:
->	exportPATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:
+>     export HADOOP_HOME=/opt/hadoop/hadoop-2.6.0
+>     exportCLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:
+>     exportPATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:
 
 保存后，不要忘记执行如下命令使配置生效：
 >     source /etc/profile
@@ -202,17 +202,17 @@ CentOS 默认已安装了 SSH client、SSH server，打开终端执行如下命�
 
 ##### 2)配置core-site.xml  
 >     <configuration>
->			<property>
-    			<name>fs.default.name</name>
-    			<value>hdfs://localhost:9000</value>
-    			<description>HDFS的URI，文件系统://namenode标识:端口号</description>
-			</property>
-			<property>
-    			<name>hadoop.tmp.dir</name>
-    			<value>/opt/hadoop/tmp</value>
-    			<description>namenode上本地的hadoop临时文件夹</description>
-			</property>
-	</configuration>
+>     	<property>
+>     		<name>fs.default.name</name>
+>     		<value>hdfs://localhost:9000</value>
+>     		<description>HDFS的URI，文件系统://namenode标识:端口号</description>
+>     	</property>
+>     	<property>
+>     		<name>hadoop.tmp.dir</name>
+>     		<value>/opt/hadoop/tmp</value>
+>     		<description>namenode上本地的hadoop临时文件夹</description>
+>     	</property>
+>     </configuration>
 
 ##### 3)配置hdfs-site.xml 
 >     <configuration>
